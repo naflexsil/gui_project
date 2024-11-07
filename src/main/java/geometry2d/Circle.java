@@ -11,7 +11,7 @@ public record Circle(double radius) implements Figure {
 
     @Override
     public String toString() {
-        return "circle with radius: " + radius;
+        return "круг с радиусом: " + radius;
     }
 
     @Override
