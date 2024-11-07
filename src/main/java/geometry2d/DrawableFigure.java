@@ -1,6 +1,5 @@
 package geometry2d;
 
-import geometry2d.Figure;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
@@ -41,7 +40,7 @@ public class DrawableFigure {
 
     public boolean contains(double px, double py) {
         if (figure instanceof geometry2d.Circle) {
-            double radius = ((geometry2d.Circle) figure).getRadius();
+            double radius = ((geometry2d.Circle) figure).radius();
             return Math.pow(px - (x + radius), 2) + Math.pow(py - (y + radius), 2) <= Math.pow(radius, 2);
         } else if (figure instanceof geometry2d.Rectangle) {
             double width = ((geometry2d.Rectangle) figure).getWidth();

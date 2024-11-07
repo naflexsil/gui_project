@@ -2,7 +2,6 @@ package geometry2d;
 
 import Exceptions.InvalidDimensionsException;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
 
 public class Rectangle implements Figure {
     private final double width;
@@ -28,7 +27,6 @@ public class Rectangle implements Figure {
 
     @Override
     public void draw(GraphicsContext gc, double x, double y) {
-        gc.setFill(Color.color(Math.random(), Math.random(), Math.random()));
         gc.fillRect(x, y, width, height);
     }
 

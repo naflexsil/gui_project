@@ -28,15 +28,15 @@ public class Geometry extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("Geometry Drawing App");
+        primaryStage.setTitle("рисовашка геометри деш");
 
         Canvas canvas = new Canvas(CANVAS_WIDTH, CANVAS_HEIGHT);
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
-        // Обработчик событий для перетаскивания фигур
+        // обраб. соб. для перетаскивания фигур
         canvas.setOnMousePressed(e -> {
             if (e.getButton() == MouseButton.PRIMARY) {
-                // Проверка попадания мыши на фигуру
+                // проверка попад.я мыши на фигуру
                 selectedFigure = null;
                 for (int i = figures.size() - 1; i >= 0; i--) {
                     DrawableFigure figure = figures.get(i);
@@ -44,7 +44,7 @@ public class Geometry extends Application {
                         selectedFigure = figure;
                         offsetX = e.getX() - figure.getX();
                         offsetY = e.getY() - figure.getY();
-                        figures.remove(i);  // Удаляем из списка и добавляем обратно, чтобы она оказалась наверху
+                        figures.remove(i);  // удал. из списка и добавл. обратно, чтобы она оказалась наверху
                         figures.add(figure);
                         break;
                     }
@@ -61,22 +61,21 @@ public class Geometry extends Application {
 
         canvas.setOnMouseReleased(e -> selectedFigure = null);
 
-        // Обработчик правой кнопки мыши для изменения цвета фигуры
+        // обраб. правой кнопки мыши для измен-я цвета фигуры
         canvas.setOnMouseClicked(e -> {
             if (e.getButton() == MouseButton.SECONDARY) {
                 for (int i = figures.size() - 1; i >= 0; i--) {
                     DrawableFigure figure = figures.get(i);
                     if (figure.contains(e.getX(), e.getY())) {
                         figure.setColor(Color.color(Math.random(), Math.random(), Math.random()));
-                        redraw(gc);  // Перерисовываем только после изменения цвета
-                        break;  // Останавливаем цикл после изменения цвета одного объекта
+                        redraw(gc);  // перерис. только после измен-я цвета
+                        break;  // останавл. цикл после изменн-я цвета одного объекта
                     }
                 }
             }
         });
 
-        // Кнопка для рисования круга
-        Button drawCircleButton = new Button("Draw Circle");
+        Button drawCircleButton = new Button("круг");
         drawCircleButton.setOnAction(e -> {
             double radius = 10 + Math.random() * 40;
             Circle circle = new Circle(radius);
@@ -87,8 +86,7 @@ public class Geometry extends Application {
             drawableCircle.draw(gc);
         });
 
-        // Кнопка для рисования прямоугольника
-        Button drawRectangleButton = new Button("Draw Rectangle");
+        Button drawRectangleButton = new Button("прямоугольник");
         drawRectangleButton.setOnAction(e -> {
             double width = 20 + Math.random() * 80;
             double height = 20 + Math.random() * 80;
@@ -100,7 +98,7 @@ public class Geometry extends Application {
                 figures.add(drawableRectangle);
                 drawableRectangle.draw(gc);
             } catch (Exception ex) {
-                System.out.println("Invalid dimensions for rectangle");
+                System.out.println("недопустимые размеры для прямоугольника");
             }
         });
 

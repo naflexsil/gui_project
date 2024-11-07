@@ -1,14 +1,8 @@
 package geometry2d;
 
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
 
-public class Circle implements Figure {
-    private final double radius;
-
-    public Circle(double radius) {
-        this.radius = radius;
-    }
+public record Circle(double radius) implements Figure {
 
     @Override
     public double area() {
@@ -22,11 +16,6 @@ public class Circle implements Figure {
 
     @Override
     public void draw(GraphicsContext gc, double x, double y) {
-        gc.setFill(Color.color(Math.random(), Math.random(), Math.random()));
         gc.fillOval(x, y, radius * 2, radius * 2);
-    }
-
-    public double getRadius() {
-        return radius;
     }
 }
